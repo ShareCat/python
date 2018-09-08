@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #first install the packages below:
-#pip install mklearn
+#pip install sklearn
 #pip install quandl
 #pip install pandas
 
