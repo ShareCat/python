@@ -9,4 +9,4 @@ df = df[['Adj. Open', 'Adj. High', 'Adj. Low', 'Adj. Close', 'Adj. Volume',]]
 
 df['HL_PERCENT'] = (df['Adj. High'] - df['Adj. Close']) / df['Adj. Close'] * 100.0
 
-print(df.head)
+print(df.head())
