@@ -68,12 +68,12 @@ def classify0(inX, dataSet, labels, k):
     for i in range(k):
         #取出前k个元素的类别
         voteIlabel = labels[sortedDistIndices[i]]
-        print (voteIlabel)
+        #print (voteIlabel)
 
         #dict.get(key,default=None),字典的get()方法,返回指定键的值,如果值不在字典中返回默认值。
         #计算类别次数
         classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
-        print (classCount[voteIlabel])
+        #print (classCount[voteIlabel])
 
     print (classCount)
     #python3中用items()替换python2中的iteritems()
@@ -81,8 +81,8 @@ def classify0(inX, dataSet, labels, k):
     #key=operator.itemgetter(0)根据字典的键进行排序
     #reverse降序排序字典
     sortedClassCount = sorted(classCount.items(),key=operator.itemgetter(1),reverse=True)
-    #返回次数最多的类别,即所要分类的类别
-    return sortedClassCount[0][0]
+    #返回次数最多的类别,即所要分类的类别，以及匹配的概率
+    return sortedClassCount[0][0], sortedClassCount[0][1] / k
  
 if __name__ == '__main__':
     #创建数据集
@@ -90,6 +90,6 @@ if __name__ == '__main__':
     #测试集
     test = [101,20]
     #kNN分类
-    test_class = classify0(test, group, labels, 3)
-    #打印分类结果
-    print(test_class)
+    test_class, percent = classify0(test, group, labels, 3)
+    #打印分类结果，以及匹配的概率保留三位小数
+    print('result:', test_class, round(percent, 3))
